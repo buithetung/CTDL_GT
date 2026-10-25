@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdbool.h>
 // Ham tim max
 int max(int array[],int first, int last){
     int max = array[first];
@@ -42,8 +43,8 @@ int main() {
     for(int i=0;i<n;i++){
         scanf("%d",&array[i]);
     }
-    int quantity = n-1;
-    while(quantity > 1) {
+    int quantity = n;
+    while(quantity >= 1) {
         int i = 0;
         while(i+quantity-1 <= (n-1)) {
             int first = i;
@@ -51,6 +52,7 @@ int main() {
             int check = check_loop(array,first,last);
             // Kiem tra lap
             if(check == 0){
+                i++;
                 continue;
             }
             // Max, min
@@ -58,12 +60,15 @@ int main() {
             int Min = min(array,first,last);
             if((Max-Min+1) == quantity){
                 printf("The largest subarray is { ");
-                for(int k=first;k<=last;k++){
+                for(int k=first;k<last;k++){
                     printf("%d, ",array[k]);
                 }
-                break;
+                printf("%d }",array[last]);
+                return 0;
             }
+        
         }
+        quantity--;
     }
     return 0;
 }
