@@ -29,7 +29,7 @@ void merge(int array_x[], int array_y[], int m, int n){
     int index = 0; //Chi so dem phan tu bang 0 dau tien
     // Dieu kien dung la khi 1 trong 2 chi so ra ngoai mang
     
-    while(x >= m || y >= n){
+    while(x <m && y <n ){
         if(array_x[x] >= array_y[y]){
             array_x[index] = array_y[y];
             index++;
@@ -43,9 +43,9 @@ void merge(int array_x[], int array_y[], int m, int n){
             index++;
             x++;
             // Sao chep phan tu voi truong hop dung
-            if(x = m){
+            if(x == m){
                 for(int j=index;j<m;j++){
-                    array_x[index] = array_y[y];
+                    array_x[j] = array_y[y];
                     y++;
                 }
             }
@@ -78,7 +78,5 @@ int main() {
     for(int i=0;i<m;i++){
         printf("%d ",array_x[i]);
     }
-    
-    printf("%d",number(array_x,m));
     return 0;
 }
